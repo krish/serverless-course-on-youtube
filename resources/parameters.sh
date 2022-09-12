@@ -1,0 +1,6 @@
+aws ssm put-parameter --name /cosmos/employee-service/dev/database/pg/hostname --value 'codelabs-instance-1.c4xtu54zbp4r.us-west-2.rds.amazonaws.com' --type String --region us-west-2 --data-type text --profile aws-personal
+aws ssm put-parameter --name /cosmos/employee-service/dev/database/pg/port --value '5432' --type String --region us-west-2 --data-type text  --profile aws-personal
+aws ssm put-parameter --name /cosmos/employee-service/dev/database/pg/database --value 'employeedb' --type String --region us-west-2 --data-type text  --profile aws-personal
+aws ssm put-parameter --name /cosmos/employee-service/dev/database/pg/username --value 'postgres' --type String --region us-west-2 --data-type text  --profile aws-personal
+aws ssm put-parameter --name /cosmos/employee-service/dev/database/pg/password --value '1qazxsw2#' --type String --region us-west-2 --data-type text  --profile aws-personal
+aws ssm put-parameter --name /cosmos/employee-service/dev/database/pg/schema --value 'public' --type String --region us-west-2 --data-type text  --profile aws-personal

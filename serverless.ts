@@ -15,7 +15,7 @@ const serverlessConfiguration: AWS = {
     stackName: '${self:service}-stack-${sls:stage}',
     apiName: '${self:service}-${sls:stage}',
     region: 'us-west-2',
-    timeout: 60,
+    timeout: 30,
     memorySize: 1024,
     endpointType: 'regional',
     vpc: {
@@ -30,12 +30,17 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-      DBHOSTNAME: 'your-server',
-      DBPORT: '5432',
-      DBNAME: 'employeedb',
-      DBUSERNAME: 'postgres',
-      DBPASSWORD: 'your-password',
-      DBSCHEMA: 'public',
+      DBHOSTNAME:
+        '${ssm:/cosmos/employee-service/${sls:stage}/database/pg/hostname}',
+      DBPORT: '${ssm:/cosmos/employee-service/${sls:stage}/database/pg/port}',
+      DBNAME:
+        '${ssm:/cosmos/employee-service/${sls:stage}/database/pg/database}',
+      DBUSERNAME:
+        '${ssm:/cosmos/employee-service/${sls:stage}/database/pg/username}',
+      DBPASSWORD:
+        '${ssm:/cosmos/employee-service/${sls:stage}/database/pg/password}',
+      DBSCHEMA:
+        '${ssm:/cosmos/employee-service/${sls:stage}/database/pg/schema}',
     },
   },
   // import the function via paths
